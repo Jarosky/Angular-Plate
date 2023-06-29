@@ -3,10 +3,11 @@ import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { UserService } from "./core/services/user.service";
 import { map } from "rxjs/operators";
 import { ProfileComponent } from "./features/profile/profile.component";
+import { TemplaateProfileComponent } from "./features/profile/TemplaateProfile.component";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "",    
     loadComponent: () =>
       import("./features/home/home.component").then((m) => m.HomeComponent),
   },
@@ -17,7 +18,7 @@ const routes: Routes = [
     canActivate: [
       () => inject(UserService).isAuthenticated.pipe(map((isAuth) => !isAuth)),
     ],
-  },
+  },     
   {
     path: "register",
     loadComponent: () =>
